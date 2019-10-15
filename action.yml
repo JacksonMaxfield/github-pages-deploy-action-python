@@ -1,6 +1,6 @@
 name: 'Deploy to GitHub Pages'
 description: 'This action will handle the building and deploying process of your project to GitHub Pages.'
-author: 'James Ives <iam@jamesiv.es>'
+author: 'Jackson Maxfield Brown <jmaxfieldbrown@gmail.com>'
 runs:
   using: 'docker'
   image: 'Dockerfile'
