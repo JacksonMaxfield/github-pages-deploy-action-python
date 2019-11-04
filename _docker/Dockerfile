@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
     python3.7-dev \
     python3-pip \
     git \
+    cmake \
     jq
 
 # Upgrade pip and force it to use python3.7

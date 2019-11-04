@@ -68,6 +68,38 @@ fi
 # Checks out the base branch to begin the deploy process.
 git checkout "${BASE_BRANCH:-master}" && \
 
+###############################################################################
+
+# We are going to do some weird things here
+# GitHub Pages (the place that a lot of these website / doc deployments target)
+# doesn't like it when we remove the entire git history of the branch.
+# (at least from our testing)
+# The next few steps will solve this problem by copying the entire git history
+# of the gh-pages branch to the build target folder prior to actually running
+# the build script. This means that we will be adding a commit to the history
+# instead of always having a single commit in our gh-pages branch which is
+# generally also desireable in many cases.
+
+###############################################################################
+
+# Make build dir target
+mkdir -p $FOLDER && \
+
+# Clone the repo to the folder so we have the entire project history
+git clone $REPOSITORY_PATH $FOLDER && \
+
+# Add current working directory to stack because who knows where we are :upside-down-smiley:
+pushd . && \
+
+# Move to build target
+cd $FOLDER && \
+
+# Checkout target branch so we have just the docs / website history
+git checkout $BRANCH && \
+
+# Return to main working directory
+popd && \
+
 # Builds the project if a build script is provided.
 echo "Running build scripts... $BUILD_SCRIPT" && \
 eval "$BUILD_SCRIPT" && \
@@ -79,9 +111,9 @@ fi
 
 # Commits the data to Github.
 echo "Deploying to GitHub..." && \
-git add -f $FOLDER && \
+cd $FOLDER && \
+git add ./* && \
+git commit -m "Deploying build to $BRANCH" --quiet && \
+git push $REPOSITORY_PATH $BRANCH --quiet && \
 
-git commit -m "Deploying to ${BRANCH} from ${BASE_BRANCH:-master} ${GITHUB_SHA}" --quiet && \
-git push $REPOSITORY_PATH `git subtree split --prefix $FOLDER ${BASE_BRANCH:-master}`:$BRANCH --force && \
-
-echo "Deployment succesful!"
+echo "Deployment successful!"
