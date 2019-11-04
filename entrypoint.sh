@@ -89,7 +89,7 @@ mkdir -p $FOLDER && \
 git clone $REPOSITORY_PATH $FOLDER && \
 
 # Add current working directory to stack because who knows where we are :upside-down-smiley:
-pushd . && \
+WORKING_DIR=`pwd` && \
 
 # Move to build target
 cd $FOLDER && \
@@ -98,7 +98,7 @@ cd $FOLDER && \
 git checkout $BRANCH && \
 
 # Return to main working directory
-popd && \
+cd $WORKING_DIR && \
 
 # Builds the project if a build script is provided.
 echo "Running build scripts... $BUILD_SCRIPT" && \
