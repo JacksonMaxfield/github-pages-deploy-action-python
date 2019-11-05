@@ -21,6 +21,6 @@ RUN apt-get update && apt-get install -y \
 # Upgrade pip and force it to use python3.7
 RUN python3.7 -m pip install --upgrade pip
 
-# Add aliases to to python3
-RUN ln -s /usr/bin/python3.7 /usr/bin/python & \
-    ln -s /usr/bin/pip3 /usr/bin/pip
+# Set python3.7 to default python
+RUN ln -sf /usr/bin/python3.7 /usr/bin/python
+RUN ln -sf /usr/bin/python3.7 /usr/bin/python3
