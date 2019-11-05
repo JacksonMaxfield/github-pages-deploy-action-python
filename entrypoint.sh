@@ -113,7 +113,7 @@ fi
 echo "Deploying to GitHub..." && \
 cd $FOLDER && \
 git add ./* && \
-git commit -m "Deploying build to $BRANCH" --quiet && \
+git commit -m "Deploying to $BRANCH from $BASE_BRANCH $GITHUB_SHA" --quiet && \
 git push $REPOSITORY_PATH $BRANCH --quiet && \
 
 echo "Deployment successful!"
