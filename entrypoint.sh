@@ -113,9 +113,8 @@ fi
 # Commits the data to Github.
 echo "Deploying to GitHub..." && \
 cd $FOLDER && \
-git ls-files -mos && \
 git add -A && \
-git commit -m "Deploying to $BRANCH from $BASE_BRANCH $GITHUB_SHA" && \
+git commit -m "Deploying to $BRANCH from $BASE_BRANCH $GITHUB_SHA" --quiet && \
 git push $REPOSITORY_PATH $BRANCH --quiet && \
 
 echo "Deployment successful!"
