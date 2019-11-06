@@ -113,8 +113,17 @@ fi
 # Commits the data to Github.
 echo "Deploying to GitHub..." && \
 cd $FOLDER && \
-git add -A && \
-git commit -m "Deploying to $BRANCH from $BASE_BRANCH $GITHUB_SHA" --quiet && \
-git push $REPOSITORY_PATH $BRANCH -f --quiet && \
 
-echo "Deployment successful!"
+# Either push changes or do nothing because up-to-date
+{
+
+    git add -A && \
+    git commit -m "Deploying to $BRANCH from $BASE_BRANCH $GITHUB_SHA" --quiet && \
+    git push $REPOSITORY_PATH $BRANCH -f --quiet && \
+    echo "Deployment successful!"
+
+} || {
+
+    echo "Everything looks up-to-date already!"
+
+}
