@@ -113,7 +113,7 @@ fi
 # Commits the data to Github.
 echo "Deploying to GitHub..." && \
 cd $FOLDER && \
-git add ./* && \
+git add ./* -f && \
 git commit -m "Deploying to $BRANCH from $BASE_BRANCH $GITHUB_SHA" --quiet && \
 git push $REPOSITORY_PATH $BRANCH --quiet && \
 
