@@ -115,6 +115,6 @@ echo "Deploying to GitHub..." && \
 cd $FOLDER && \
 git add -A && \
 git commit -m "Deploying to $BRANCH from $BASE_BRANCH $GITHUB_SHA" --quiet && \
-git push $REPOSITORY_PATH $BRANCH --quiet && \
+git push $REPOSITORY_PATH $BRANCH -f --quiet && \
 
 echo "Deployment successful!"
