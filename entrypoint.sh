@@ -114,7 +114,7 @@ fi
 echo "Deploying to GitHub..." && \
 cd $FOLDER && \
 git ls-files -mos && \
-git add `git ls-files -mos` && \
+git add -A && \
 git commit -m "Deploying to $BRANCH from $BASE_BRANCH $GITHUB_SHA" && \
 git push $REPOSITORY_PATH $BRANCH --quiet && \
 
