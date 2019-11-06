@@ -81,6 +81,7 @@ git checkout "${BASE_BRANCH:-master}" && \
 # generally also desireable in many cases.
 
 ###############################################################################
+echo "Preparing for deployment build..." && \
 
 # Make build dir target
 mkdir -p $FOLDER && \
