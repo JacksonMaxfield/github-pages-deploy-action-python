@@ -66,7 +66,7 @@ then
 fi
 
 # Checks out the base branch to begin the deploy process.
-git checkout "${BASE_BRANCH:-master}" && \
+git checkout $BASE_BRANCH && \
 
 ###############################################################################
 
@@ -81,7 +81,7 @@ git checkout "${BASE_BRANCH:-master}" && \
 # generally also desireable in many cases.
 
 ###############################################################################
-echo "Preparing for deployment build..." && \
+echo "Preparing for deployment build from $BASE_BRANCH" && \
 
 # Make build dir target
 mkdir -p $FOLDER && \
