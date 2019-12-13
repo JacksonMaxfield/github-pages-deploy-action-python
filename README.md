@@ -1,3 +1,5 @@
+[As of version 3 release on the original JamesIves repo, this fork is no longer needed.](https://github.com/JamesIves/github-pages-deploy-action)
+
 # GitHub Pages Deploy Action: Python :rocket:
 
 This [GitHub action](https://github.com/features/actions) will handle the building and deploy process of your project to [GitHub Pages](https://pages.github.com/). It can be configured to upload your production-ready code into any branch you'd like, including `gh-pages` and `docs`. This action is built on [Python](https://python.org/), which means that you can call any optional build scripts your project requires prior to deploying.
